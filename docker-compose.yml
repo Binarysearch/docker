@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    build: ./apache2/
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./apache2/conf:/usr/local/apache2/conf
+  backend:
+    build: ./tomcat/
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./tomcat/logs:/usr/local/tomcat/logs
+      - ./tomcat/webapps:/usr/local/tomcat/webapps
